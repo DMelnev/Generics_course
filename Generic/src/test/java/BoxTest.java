@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoxTest {
@@ -11,10 +14,11 @@ class BoxTest {
 
     @Test
     public void test() {
-        Box<String, Integer, Float> box1 = new Box<>("satring", 20, 1f);
-        Box<String, Integer, Float> box2 = new Box<>("satring", 10, 1.2f);
-        float expected = 32.2f;
-        float result = box1.getValue() + box2.getValue() + box1.getDigit() + box2.getDigit();
-        assertEquals(expected, result,0.001, "equals ");
+//        Box<Integer> box = new Box<>(1, 2, 3, 4);
+//        Box<Float> box2 = new Box<>(1f, 2f, 3f, 4f);
+//        assertEquals(0, box.compare(box2),0.001, "equals ");
+        List<Integer> numbers = new ArrayList<>();
+        Box.method(numbers);
+
     }
 }

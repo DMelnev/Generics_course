@@ -1,35 +1,35 @@
-public class Box<K, V, F> {
-    private K key;
-    private V value;
-    private F digit;
+import java.util.List;
 
-    public Box(K key, V value, F digit) {
-        this.key = key;
-        this.value = value;
-        this.digit = digit;
+public class Box<T extends Number & Comparable<T>> {
+    private T[] array;
+
+    public Box(T... array) {
+        this.array = array;
     }
 
-    public K getKey() {
-        return key;
+    public T[] getArray() {
+        return array;
     }
 
-    public V getValue() {
-        return value;
+    public void setArray(T[] array) {
+        this.array = array;
+    }
+    public double avg(){
+        double res = 0;
+        for (T element : array){
+            res += ((Number) element).doubleValue();
+        }
+        return res/array.length;
+    }
+//    public static void method(List<Number> numbers){
+//
+//    }
+    public static void method(List<? extends Number> numbers){
+
     }
 
-    public void setKey(K key) {
-        this.key = key;
-    }
-
-    public void setValue(V value) {
-        this.value = value;
-    }
-
-    public F getDigit() {
-        return digit;
-    }
-
-    public void setDigit(F digit) {
-        this.digit = digit;
+    public int compare(Box<?> another){
+//  public int compare(Box<? extends Integer> another){
+        return (int)(avg() - another.avg());
     }
 }
