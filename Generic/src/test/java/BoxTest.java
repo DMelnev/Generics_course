@@ -15,6 +15,6 @@ class BoxTest {
         Box<String, Integer, Float> box2 = new Box<>("satring", 10, 1.2f);
         float expected = 32.2f;
         float result = box1.getValue() + box2.getValue() + box1.getDigit() + box2.getDigit();
-        assertEquals(expected, result, "equals ");
+        assertEquals(expected, result,0.001, "equals ");
     }
 }
