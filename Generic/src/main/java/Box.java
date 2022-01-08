@@ -14,22 +14,33 @@ public class Box<T extends Number & Comparable<T>> {
     public void setArray(T[] array) {
         this.array = array;
     }
-    public double avg(){
+
+    public double avg() {
         double res = 0;
-        for (T element : array){
+        for (T element : array) {
             res += ((Number) element).doubleValue();
         }
-        return res/array.length;
+        return res / array.length;
     }
-//    public static void method(List<Number> numbers){
+
+    //    public static void method(List<Number> numbers){
 //
 //    }
-    public static void method(List<? extends Number> numbers){
+    public static void method(List<? extends Number> numbers) {
 
     }
 
-    public int compare(Box<?> another){
+    public int compare(Box<?> another) {
 //  public int compare(Box<? extends Integer> another){
-        return (int)(avg() - another.avg());
+        return (int) (avg() - another.avg());
+    }
+
+    public static <U> U getFirstElement(List<U> list) {
+        return list.get(0);
+    }
+
+    public static <T> void transfer(List<? extends T> src, List<? super T> dist) {
+        dist.addAll(src);
+        src.clear();
     }
 }
