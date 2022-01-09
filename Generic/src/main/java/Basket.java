@@ -1,14 +1,10 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class Basket<F extends Fruit> implements Iterable<F> {
+public class Basket<F extends Fruit>{
     private ArrayList<F> list = new ArrayList<>();
-    private static int size = 0;
-
 
     public void add(F fruit) {
         list.add(fruit);
-        size++;
     }
 
     public float getWeight() {
@@ -25,30 +21,12 @@ public class Basket<F extends Fruit> implements Iterable<F> {
         else return 0;
     }
 
-    public static  void transfer(Basket<F> dest, Basket<F> source) {
-        for (Fruit fruit : source){
-            dest.add(fruit);
-        }
+    public static <T extends Fruit> void transfer(Basket<? extends T> src, Basket<? super T> dst) {
+        dst.list.addAll(src.list);
+        src.clear();
     }
 
     public void clear() {
         list = new ArrayList<>();
-    }
-
-    @Override
-    public Iterator iterator() {
-        return new Iterator() {
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                return index < list.size();
-            }
-
-            @Override
-            public F next() {
-                return list.get(index++);
-            }
-        };
     }
 }
