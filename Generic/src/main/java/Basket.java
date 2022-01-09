@@ -16,17 +16,12 @@ public class Basket<F extends Fruit>{
     }
 
     public int compare(Basket<?> basket2) {
-        if (getWeight() > basket2.getWeight()) return 1;
-        else if (getWeight() < basket2.getWeight()) return -1;
-        else return 0;
+        return Float.compare(getWeight(), basket2.getWeight());
     }
 
     public static <T extends Fruit> void transfer(Basket<? extends T> src, Basket<? super T> dst) {
         dst.list.addAll(src.list);
-        src.clear();
+        src.list.clear();
     }
 
-    public void clear() {
-        list = new ArrayList<>();
-    }
 }
