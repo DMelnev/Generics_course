@@ -9,6 +9,7 @@ public class Basket<F extends Fruit>{
 
     public float getWeight() {
         float sum = 0;
+
         for (F element : list) {
             sum += element.getWeight();
         }
